@@ -9,6 +9,8 @@ class IpcMaster
         IpcMaster();
         ~IpcMaster();
 
+        void run();
+
 };
 
 }

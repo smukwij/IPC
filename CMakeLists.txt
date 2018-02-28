@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.6)
 set(CMAKE_C_COMPILER /usr/bin/clang-5.0)
 set(CMAKE_CXX_COMPILER /usr/bin/clang++-5.0)
 
-project(ipc)
+project(ipcp)
 
 set(CMAKE_CXX_FLAGS "-Werror -pedantic" )
 set(CMAKE_EXE_LINKER_FLAG "")
@@ -21,10 +21,10 @@ set(SOURCES
     ${CMAKE_SOURCE_DIR}/main.cc
     )
 
-add_subdirectory(src)
+add_subdirectory(ipc)
 #add_subdirectory(trainings)
 #add_subdirectory(stb_image)
 
-add_executable(ipc ${SOURCES})
+add_executable(ipcp ${SOURCES})
 
-target_link_libraries(ipc src)
+target_link_libraries(ipcp ipc)
