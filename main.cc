@@ -1,4 +1,7 @@
 #include "ipc/IpcMaster.hh"
+#include <cstdlib>
+#include <string>
+
 
 int main()
 {
