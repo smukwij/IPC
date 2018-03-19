@@ -1,7 +1,7 @@
 #include "Process.hh" 
 
+#include "../logging/Logging.hh"
 
-#include <iostream>
 #include <unistd.h>
 #include <sys/wait.h>
 
@@ -37,7 +37,7 @@ Process create(std::function<void()> entry_point)
 
     switch(pid){
         case Process::INVALID_PID:
-            std::cerr << "Error: cannot create process" << std::endl;
+            logging::log_err << "Error: cannot create process" << logging::end();
         case Process::CHILD_PID:
             entry_point();
             break;
@@ -62,7 +62,9 @@ void wait(Process& proc)
     if(true == is_waiting_needed(proc._pid))
     {
         int status = 0;
+        logging::log_info << "Befor wait for: " << proc._pid <<logging::end();
         waitpid(proc._pid, &status, 0);
+        logging::log_info << "After wait" << logging::end();
         proc._pid = Process::INVALID_PID;
     }
 }
