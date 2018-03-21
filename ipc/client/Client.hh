@@ -17,7 +17,7 @@ class Client
         void connect(const std::string& server);
         void send_message(const std::string& message);
 
-        void shut_down();
+        void shut_down(const std::string& addr);
     private:
         int _socket_fd;
 };

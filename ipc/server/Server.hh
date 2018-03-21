@@ -19,7 +19,7 @@ class Server
 
         void wait_for_message();
 
-        void shut_down();
+        void shut_down(const std::string& addr);
     private:
         int _socket_fd;
         int _client_socket_fd;

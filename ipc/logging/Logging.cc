@@ -26,7 +26,8 @@ logger& operator<<( logger& l, const int i)
     l.ss << i;
     return l;
 }
-logger& operator<< ( logger& l, const end& )
+
+logger& operator<< ( logger& l, const end_type& )
 {
     const std::string time {"place for time"};
     std::cout << time << " Pid: " << getpid() << " " << l.ss.str() << std::endl;

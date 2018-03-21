@@ -6,9 +6,11 @@ namespace ipc {
 namespace logging 
 {
 
-struct end
+struct end_type
 {
 };
+
+static end_type end;
 
 struct logger
 {
@@ -19,9 +21,7 @@ struct logger
         friend logger& operator<<( logger& l, const double d);
         friend logger& operator<<( logger& l, const int i);
 
-
-        
-        friend logger& operator<<( logger& l, const end&);
+        friend logger& operator<<( logger& l, const end_type&);
 
         std::stringstream ss;
 };
@@ -37,6 +37,6 @@ logger& operator<<( logger& l, const double d);
 
 logger& operator<<( logger& l, const int i);
 
-logger& operator<< ( logger& l, const end& );
+logger& operator<< ( logger& l, const end_type& );
 }
 }

@@ -5,6 +5,7 @@ set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/server/Server.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/client/Client.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/logging/Logging.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/connection/Socket.cc
     )
 
 set(HEADERS 
@@ -13,6 +14,8 @@ set(HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/server/Server.hh
     ${CMAKE_CURRENT_SOURCE_DIR}/client/Client.hh
     ${CMAKE_CURRENT_SOURCE_DIR}/logging/Logging.hh
+    ${CMAKE_CURRENT_SOURCE_DIR}/connection/Connection.hh
+    ${CMAKE_CURRENT_SOURCE_DIR}/connection/Socket.hh
     )
 
 
