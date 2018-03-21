@@ -6,7 +6,6 @@ namespace ipc {
 namespace client {
 
 
-//TODO: create policies for connection strategy: UNIX socket, internet socket, named PIPEs and so on..
 class Client
 {
     public:
