@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 
 namespace ipc {
 namespace connection {
@@ -8,18 +9,7 @@ template<class Socket>
 class Connection;
 
 template<class Socket>
-Connection<Socket> create(const typename Socket::AddrType& client, const typename Socket::AddrType& server)
-{
-    Connection<Socket> con{};
-    con._client_addr = client;
-    con._client_handler = Socket::create();
-    Socket::bind(client, con._client_handler);
-    Socket::connect(server, con._client_handler);
-    return con;
-}
-
-
-
+std::unique_ptr<Connection<Socket>> create(Socket& client, const typename Socket::AddrType& server);
 
 template<class Socket>
 class Connection
@@ -27,14 +17,31 @@ class Connection
 public:
     ~Connection() = default;
 
+    int send(const typename Socket::PayloadType& payload)
+    {
+        return _socket.send(payload);
+    }
+
+
 private:
-    friend Connection<Socket> create<>(const typename Socket::AddrType& client, const typename Socket::AddrType& server);
+    friend std::unique_ptr<Connection<Socket>> create<>(Socket& client, const typename Socket::AddrType& server);
 
-    Connection() = default;
+    Connection(Socket& socket)
+        : _socket (socket)
+    {
+    }
 
-    typename Socket::HandlerType _client_handler;
-    typename Socket::AddrType _client_addr;
+    Socket& _socket;
 };
+
+template<class Socket>
+std::unique_ptr<Connection<Socket>> create(Socket& client, const typename Socket::AddrType& server)
+{
+    client.connect(server);
+    Connection<Socket>* con = new Connection<Socket>(client);
+    return std::unique_ptr<Connection<Socket>>{con};
+}
+
 
 }
 }

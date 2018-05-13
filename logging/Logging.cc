@@ -3,6 +3,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <iostream>
+#include <chrono>
+#include <ctime>
 
 namespace ipc {
 namespace logging 
@@ -27,10 +29,20 @@ logger& operator<<( logger& l, const int i)
     return l;
 }
 
+namespace
+{
+    auto get_current_time()
+    {
+        auto now = std::chrono::system_clock::now();
+        return std::chrono::system_clock::to_time_t(now);
+    }
+}
+
+
 logger& operator<< ( logger& l, const end_type& )
 {
-    const std::string time {"place for time"};
-    std::cout << time << " Pid: " << getpid() << " " << l.ss.str() << std::endl;
+    auto time = get_current_time();
+    std::cout << std::ctime(&time) << " Pid: " << getpid() << " " << l.ss.str() << std::endl;
     l.ss.str(std::string());
     return l;
 }

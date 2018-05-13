@@ -11,10 +11,21 @@ class Socket
     public:
         using HandlerType = int;
         using AddrType = std::string;
+        using PayloadType = std::string;
 
-        static int create();
-        static int bind( const AddrType& addr, HandlerType client_handler);
-        static int connect(const AddrType& server, HandlerType client_handler);
+        Socket();
+        ~Socket();
+
+        int create();
+        int bind( const AddrType& addr);
+        int connect(const AddrType& server) const;
+
+        int send(const PayloadType& message);
+        PayloadType receive();
+
+    private:
+        HandlerType _handler;
+        AddrType _addr;
 };
 
 }

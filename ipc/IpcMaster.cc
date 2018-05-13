@@ -38,14 +38,14 @@ void client_fun2()
     const std::string message {"message client_fun2"};
     for(int i = 0; i < 10; ++i)
     {
-        ipc::logging::log_info << " counter: " << i << ipc::logging::end;
+        ipc::logging::log_info << "client2 counter: " << i << ipc::logging::end;
         c.send_message(message);
     }
-    ipc::logging::log_info << "client just before end" << ipc::logging::end;
+    ipc::logging::log_info << "client2 just before end" << ipc::logging::end;
     c.shut_down("ipc.client2");
-    ipc::logging::log_info << "End of client fun" << ipc::logging::end;
+    ipc::logging::log_info << "End2 of client fun" << ipc::logging::end;
     }
-    ipc::logging::log_info << "Totaly finshied client " << ipc::logging::end;
+    ipc::logging::log_info << "Totaly2 finshied client " << ipc::logging::end;
 }
 
 

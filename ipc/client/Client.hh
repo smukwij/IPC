@@ -1,8 +1,20 @@
 #pragma once
 
 #include <string>
+#include <memory>
+#include "../connection/Socket.hh"
 
 namespace ipc {
+
+namespace connection
+{
+class Socket;
+
+template<class Socket>
+class Connection;
+}
+
+
 namespace client {
 
 
@@ -18,7 +30,8 @@ class Client
 
         void shut_down(const std::string& addr);
     private:
-        int _socket_fd;
+        connection::Socket _socket;
+        std::unique_ptr<connection::Connection<connection::Socket>> _connection;
 };
 
 
