@@ -1,3 +1,4 @@
+include_directories(${PROJECT_SOURCE_DIR}) 
 
 set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/MyAsio.cc

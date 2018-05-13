@@ -1,6 +1,6 @@
 #include "Process.hh" 
 
-#include "../logging/Logging.hh"
+#include <logging/Logging.hh>
 
 #include <unistd.h>
 #include <sys/wait.h>

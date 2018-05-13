@@ -5,8 +5,9 @@
 #include <iostream>
 #include <chrono>
 #include <ctime>
+#include <thread>
 
-namespace ipc {
+
 namespace logging 
 {
 
@@ -42,9 +43,9 @@ namespace
 logger& operator<< ( logger& l, const end_type& )
 {
     auto time = get_current_time();
-    std::cout << std::ctime(&time) << " Pid: " << getpid() << " " << l.ss.str() << std::endl;
+    auto thread_id = std::this_thread::get_id();
+    std::cout << std::ctime(&time) << " Pid: " << getpid() << ", thread: "<< thread_id << " " << l.ss.str() << std::endl;
     l.ss.str(std::string());
     return l;
-}
 }
 }

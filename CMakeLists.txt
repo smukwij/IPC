@@ -13,7 +13,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
 set(BOOST_ROOT ${CMAKE_SOURCE_DIR}/lib/boost/lib/boost_1_67_0/include)
-find_package(Boost REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED COMPONENTS system thread)
 
 #link_directories(${CMAKE_SOURCE_DIR}/lib)
 #link_directories(/usr/lib/x86_64-linux-gnu )
@@ -29,7 +29,7 @@ set(SOURCES
 
 add_subdirectory(ipc)
 add_subdirectory(my_asio)
-#add_subdirectory(stb_image)
+add_subdirectory(logging)
 
 add_executable(ipcp ${SOURCES})
 
@@ -41,6 +41,7 @@ set(EXTERNAL_LIBS
 set(INTERNAL_LIBS
     ipc
     my_asio
+    logging
     )
 
 target_link_libraries(ipcp ${INTERNAL_LIBS} ${EXTERNAL_LIBS})

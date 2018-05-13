@@ -1,5 +1,5 @@
 #include "Socket.hh"
-#include "../logging/Logging.hh"
+#include <logging/Logging.hh>
 
 #include <sys/socket.h>
 #include <sys/un.h>

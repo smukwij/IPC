@@ -2,7 +2,6 @@
 #include <string>
 #include <sstream>
 
-namespace ipc {
 namespace logging 
 {
 
@@ -38,5 +37,4 @@ logger& operator<<( logger& l, const double d);
 logger& operator<<( logger& l, const int i);
 
 logger& operator<< ( logger& l, const end_type& );
-}
 }
