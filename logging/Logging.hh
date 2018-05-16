@@ -19,6 +19,8 @@ struct logger
         friend logger& operator<<( logger& l, const std::string& message);
         friend logger& operator<<( logger& l, const double d);
         friend logger& operator<<( logger& l, const int i);
+        friend logger& operator<<( logger& l, const unsigned long ul);
+
 
         friend logger& operator<<( logger& l, const end_type&);
 
@@ -35,6 +37,8 @@ logger& operator<<( logger& l, const std::string& message);
 logger& operator<<( logger& l, const double d);
 
 logger& operator<<( logger& l, const int i);
+
+logger& operator<<( logger& l, const unsigned long ul);
 
 logger& operator<< ( logger& l, const end_type& );
 }

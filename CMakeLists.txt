@@ -27,10 +27,6 @@ set(SOURCES
     ${CMAKE_SOURCE_DIR}/main.cc
     )
 
-add_subdirectory(ipc)
-add_subdirectory(my_asio)
-add_subdirectory(logging)
-
 add_executable(ipcp ${SOURCES})
 
 set(EXTERNAL_LIBS 
@@ -44,4 +40,12 @@ set(INTERNAL_LIBS
     logging
     )
 
+add_subdirectory(ipc)
+add_subdirectory(my_asio)
+add_subdirectory(logging)
+
+
 target_link_libraries(ipcp ${INTERNAL_LIBS} ${EXTERNAL_LIBS})
+
+
+

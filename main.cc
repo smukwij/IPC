@@ -4,11 +4,6 @@
 
 int main()
 {
-//    ipc::IpcMaster ipc;
-//    ipc.run();
-
-//    boost::asio::io_context io;
-
     my_asio::MyAsio ma;
     ma.run();
 
